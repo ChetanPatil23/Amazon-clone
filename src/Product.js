@@ -1,7 +1,22 @@
 import React from "react";
 import "./Product.css";
+import { useGlobalContext } from "./Context";
 
 const Product = ({ id, title, image, price, rating }) => {
+  const [{ basket }, dispatch] = useGlobalContext();
+  
+  const addToBasket = () => {
+    dispatch({
+      type: "ADD_TO_BASKET",
+      item: {
+        id,
+        title,
+        image,
+        price,
+        rating,
+      },
+    });
+  };
   return (
     <div className="product">
       <div className="product__info">
@@ -13,13 +28,13 @@ const Product = ({ id, title, image, price, rating }) => {
         <div className="product__rating">
           {Array(rating)
             .fill()
-            .map((_) => (
-              <p>🌟</p>
+            .map((_, index) => (
+              <p key={index}>🌟</p>
             ))}
         </div>
       </div>
       <img src={image} alt={title} />
-      <button>Add to basket</button>
+      <button onClick={addToBasket}>Add to basket</button>
     </div>
   );
 };

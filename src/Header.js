@@ -2,9 +2,11 @@ import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket"
+import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import { useGlobalContext } from "./Context"; 
 
 const Header = () => {
+  const [{basket}]=useGlobalContext();
   return (
     <nav className="header">
       <Link to="/">
@@ -40,7 +42,7 @@ const Header = () => {
         <Link to='/checkout'className="header__link">
           <div className="header__optionbasket">
             <ShoppingBasketIcon/>
-            <span className="header__option2 header__basketcount">0</span>
+            <span className="header__option2 header__basketcount">{basket?.length}</span>
           </div>
         </Link>
       </div>
