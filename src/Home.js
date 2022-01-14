@@ -16,7 +16,7 @@ const Home = () => {
           title="Amazon Echo Dot Speaker (Voicebot|Black-Pro7)"
           price="4999"
           rating={4}
-          image="http://authors.appadvice.com/wp-content/appadvice-v2-media/2017/07/maxresdefault_91d2a4db6926e3522f44b444bd9ad967.jpg"
+          image="https://m.media-amazon.com/images/I/61-DjUz7JxL.jpg"
         />
         <Product
           id="2"
@@ -35,14 +35,14 @@ const Home = () => {
           title="Symactive Gym Training Gloves, Set of 2, Medium, Ace, Green"
           price="699"
           rating={2}
-          image="https://m.media-amazon.com/images/I/81dK-jhi0cL._SL1500_.jpg"
+          image="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_1500,h_1500/global/041465/01/fnd/IND/fmt/png/Training-Essential-Unisex-Fingered-Gloves"
         />
         <Product
           id="4"
           title="(Renewed) Zebronics Peace Wireless Earphone (Black)"
-          price="300"
+          price="399"
           rating={3}
-          image="https://m.media-amazon.com/images/I/81czIlNvhrL._SL1500_.jpg"
+          image="https://cdn.shopify.com/s/files/1/0057/8938/4802/products/3b27aa2a-68ce-47db-a975-ffd5543393b6_540x.png?v=1625046357"
         />
         <Product
           id="5"
@@ -56,10 +56,10 @@ const Home = () => {
       <div className="home__row">
         <Product
           id="6"
-          title="Alexa Earbuds & Frames (Super smart|| AI Powered || Black Set)"
+          title="Redmi 80 cm (32 inches) HD Ready Smart LED TV | L32M6-RA (Black) (2021 Model) | With Android 11"
           price="9000"
           rating={5}
-          image="https://46ba123xc93a357lc11tqhds-wpengine.netdna-ssl.com/wp-content/uploads/2019/09/amazon-alexa-event-sept-2019.jpg"
+          image="https://m.media-amazon.com/images/I/71huHaBFhNL._SY450_.jpg"
         />
       </div>
     </div>

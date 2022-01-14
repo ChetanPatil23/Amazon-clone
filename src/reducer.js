@@ -3,6 +3,7 @@ export const initialState = {
 };
 
 const reducer = (state, action) => {
+  console.log(action);
   switch (action.type) {
     case "ADD_TO_BASKET":
       return {
@@ -11,7 +12,12 @@ const reducer = (state, action) => {
       };
       break;
     case "REMOVE_FROM_BASKET":
-      //Logic
+      let tempBasket = [...state.basket];
+      const newBasket = tempBasket.filter((item) => item.id !== action.itemId);
+      return {
+        ...state,
+        basket: newBasket,
+      };
       break;
     default:
       return state;
