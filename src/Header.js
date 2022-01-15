@@ -3,10 +3,17 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
-import { useGlobalContext } from "./Context"; 
+import { useGlobalContext } from "./Context";
+import { auth } from "./firebase";
 
 const Header = () => {
-  const [{basket}]=useGlobalContext();
+  const [{ basket, user }] = useGlobalContext();
+
+  const login = () => {
+    if (user) {
+      auth.signOut();
+    }
+  };
   return (
     <nav className="header">
       <Link to="/">
@@ -21,10 +28,12 @@ const Header = () => {
         <SearchIcon className="header__searchIcon" />
       </div>
       <div className="header__nav">
-        <Link to='/login' className="header__link">
-          <div className="header__option">
-            <span className="header__option1">Hello Chetan</span>
-            <span className="header__option2">Sign In</span>
+        <Link to={!user && "/login"} className="header__link">
+          <div onClick={login} className="header__option">
+            <span className="header__option1">Hello {user?.email}</span>
+            <span className="header__option2">
+              {user ? "Sign Out" : "Sign In"}
+            </span>
           </div>
         </Link>
         <Link className="header__link">
@@ -39,10 +48,12 @@ const Header = () => {
             <span className="header__option2">Prime</span>
           </div>
         </Link>
-        <Link to='/checkout'className="header__link">
+        <Link to="/checkout" className="header__link">
           <div className="header__optionbasket">
-            <ShoppingBasketIcon/>
-            <span className="header__option2 header__basketcount">{basket?.length}</span>
+            <ShoppingBasketIcon />
+            <span className="header__option2 header__basketcount">
+              {basket?.length}
+            </span>
           </div>
         </Link>
       </div>

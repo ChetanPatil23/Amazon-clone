@@ -6,13 +6,7 @@ import { getBasketTotal } from "./reducer";
 
 const Subtotal = () => {
   const [{ basket }, dispatch] = useGlobalContext();
-// //   console.log(getBasketTotal(basket));
-// const [price,setPrice]=useState(0);
-// useEffect(() => {
-//     const newPrice=basket?.reduce((amount,item)=>{return (Number(item.price)+amount)},0);
-//     setPrice(newPrice)
-// }, [basket])
-// console.log(price);
+
   return (
     <div className="subtotal">
       <CurrencyFormat

@@ -3,19 +3,23 @@ import "./Product.css";
 import { useGlobalContext } from "./Context";
 
 const Product = ({ id, title, image, price, rating }) => {
-  const [{ basket }, dispatch] = useGlobalContext();
-  
+  const [{ basket, user }, dispatch] = useGlobalContext();
+
   const addToBasket = () => {
-    dispatch({
-      type: "ADD_TO_BASKET",
-      item: {
-        id,
-        title,
-        image,
-        price,
-        rating,
-      },
-    });
+    if (user) {
+      dispatch({
+        type: "ADD_TO_BASKET",
+        item: {
+          id,
+          title,
+          image,
+          price,
+          rating,
+        },
+      });
+    } else {
+      alert("Please Sign-In to Add Items to the Basket");
+    }
   };
   return (
     <div className="product">
