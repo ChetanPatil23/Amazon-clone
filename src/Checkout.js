@@ -2,10 +2,16 @@ import React from "react";
 import "./Checkout.css";
 import { useGlobalContext } from "./Context";
 import CheckoutProduct from "./CheckoutProduct";
-import Subtotal from './Subtotal';
+import Subtotal from "./Subtotal";
 
 const Checkout = () => {
   const [{ basket }, dispatch] = useGlobalContext();
+
+  const removeAllItems = () => {
+    dispatch({
+      type: "REMOVE_ALL_ITEMS",
+    });
+  };
 
   return (
     <div className="checkout">
@@ -25,7 +31,10 @@ const Checkout = () => {
           </div>
         ) : (
           <div>
-            <h1 className="checkout_title">Your Shopping Basket</h1>
+            <div className="flex">
+              <h1 className="checkout_title">Your Shopping Basket</h1>
+              <button onClick={removeAllItems}>Clear All</button>
+            </div>
             {basket.map((item) => (
               <CheckoutProduct key={item.id} {...item} />
             ))}
@@ -34,7 +43,7 @@ const Checkout = () => {
       </div>
       {basket.length > 0 && (
         <div className="checkoutRight">
-          <Subtotal/>
+          <Subtotal />
         </div>
       )}
     </div>

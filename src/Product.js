@@ -2,7 +2,7 @@ import React from "react";
 import "./Product.css";
 import { useGlobalContext } from "./Context";
 
-const Product = ({ id, title, image, price, rating }) => {
+const Product = ({ id, title, image, price, rating, qty }) => {
   const [{ basket, user }, dispatch] = useGlobalContext();
 
   const addToBasket = () => {
@@ -15,6 +15,7 @@ const Product = ({ id, title, image, price, rating }) => {
           image,
           price,
           rating,
+          qty
         },
       });
     } else {
