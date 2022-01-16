@@ -1,17 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Home.css";
 import Product from "./Product";
-import Scrollbar from './Scrollbar';
+import Scrollbar from "./Scrollbar";
+import { images } from "./CarouselImages";
 
 const Home = () => {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    setTimeout(() => {
+      checkIndex(index);
+    }, 5000);
+  }, [index]);
+
+  const checkIndex = (index) => {
+    if (index < images.length - 1) {
+      setIndex(index + 1);
+    } else {
+      setIndex(0);
+    }
+  };
+  
   return (
-    
     <div className="home">
       <img
         className="home__image"
-        src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
+        src={images[index].url}
         alt="Amazon Banner"
       />
+      {/* Static Image */}
+      {/* <img
+        className="home__image"
+        src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
+        alt="Amazon Banner"
+      /> */}
       <div className="home__row">
         <Product
           id="1"
@@ -64,10 +85,8 @@ const Home = () => {
           image="https://m.media-amazon.com/images/I/71huHaBFhNL._SY450_.jpg"
         />
       </div>
-      <Scrollbar/>
+      <Scrollbar />
     </div>
-    
-    
   );
 };
 
