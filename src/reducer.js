@@ -65,6 +65,17 @@ const reducer = (state, action) => {
         };
       }
       break;
+      case "REMOVE_COMPLETE_ITEM_FROM_BASKET":
+        const arrayItems=[...state.basket];
+        const newBasket = arrayItems.filter(
+          (item) => item.id !== action.itemId
+        );
+        return {
+          ...state,
+          basket: newBasket,
+        };
+        break;
+
     default:
       return state;
   }

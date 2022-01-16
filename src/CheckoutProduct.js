@@ -16,6 +16,13 @@ const CheckoutProduct = ({ id, title, image, price, rating, qty }) => {
       itemId: itemId,
     });
   };
+
+  const removeCompleteItem = (itemId) =>{
+    dispatch({
+      type: "REMOVE_COMPLETE_ITEM_FROM_BASKET",
+      itemId: itemId,
+    });
+  }
   return (
     <div className="checkoutProduct">
       <img className="checkoutProduct__image" src={image} alt={title} />
@@ -41,7 +48,7 @@ const CheckoutProduct = ({ id, title, image, price, rating, qty }) => {
             +
           </button>
         </div>
-        <button onClick={() => removeItem(id)}>Remove</button>
+        <button onClick={() => removeCompleteItem(id)}>Remove</button>
       </div>
     </div>
   );
