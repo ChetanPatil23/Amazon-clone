@@ -1,0 +1,14 @@
+.scrollbar{
+    background-color: #131921;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    color:lightgray;
+    cursor:pointer;
+}
+
+.scrollbar h4{
+    color: whitesmoke;
+    padding: 20px;
+}

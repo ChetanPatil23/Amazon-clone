@@ -1,9 +1,11 @@
 import React from "react";
 import "./Home.css";
 import Product from "./Product";
+import Scrollbar from './Scrollbar';
 
 const Home = () => {
   return (
+    
     <div className="home">
       <img
         className="home__image"
@@ -62,7 +64,10 @@ const Home = () => {
           image="https://m.media-amazon.com/images/I/71huHaBFhNL._SY450_.jpg"
         />
       </div>
+      <Scrollbar/>
     </div>
+    
+    
   );
 };
 
