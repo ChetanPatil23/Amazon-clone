@@ -2,17 +2,23 @@ import React from "react";
 import "./CheckoutProduct.css";
 import { useGlobalContext } from "./Context";
 
-const CheckoutProduct = ({ id, title, image, price, rating }) => {
-    const [{basket},dispatch] = useGlobalContext();
-    const removeItem=(itemId)=>{
-        dispatch({
-            type:"REMOVE_FROM_BASKET",
-            itemId:itemId
-        })
-    }
+const CheckoutProduct = ({ id, title, image, price, rating, qty }) => {
+  const [{ basket }, dispatch] = useGlobalContext();
+  const addItem = () => {
+    dispatch({
+      type: "ADD_TO_BASKET",
+      item: { id, title, image, price, rating, qty },
+    });
+  };
+  const removeItem = (itemId) => {
+    dispatch({
+      type: "REMOVE_FROM_BASKET",
+      itemId: itemId,
+    });
+  };
   return (
     <div className="checkoutProduct">
-      <img className='checkoutProduct__image' src={image} alt={title} />
+      <img className="checkoutProduct__image" src={image} alt={title} />
       <div className="checkoutProduct__info">
         <p className="checkoutProduct__title">{title}</p>
 
@@ -27,7 +33,15 @@ const CheckoutProduct = ({ id, title, image, price, rating }) => {
               <p key={index}>🌟</p>
             ))}
         </div>
-        <button onClick={()=>removeItem(id)}>Remove</button>
+        <div className="btngrp">
+          <button onClick={() => removeItem(id)}>-</button>
+
+          <input type="text" value={qty} />
+          <button className="btn2" onClick={addItem}>
+            +
+          </button>
+        </div>
+        <button onClick={() => removeItem(id)}>Remove</button>
       </div>
     </div>
   );
