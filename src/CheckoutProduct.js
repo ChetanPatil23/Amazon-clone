@@ -43,7 +43,7 @@ const CheckoutProduct = ({ id, title, image, price, rating, qty }) => {
         <div className="btngrp">
           <button onClick={() => removeItem(id)}>-</button>
 
-          <input type="text" value={qty} />
+          <input type="text" value={qty} readOnly/>
           <button className="btn2" onClick={addItem}>
             +
           </button>

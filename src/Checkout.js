@@ -8,9 +8,14 @@ const Checkout = () => {
   const [{ basket }, dispatch] = useGlobalContext();
 
   const removeAllItems = () => {
-    dispatch({
-      type: "REMOVE_ALL_ITEMS",
-    });
+    let confirmToDelete = window.confirm(
+      "Are you sure, you want to remove all items from the list ?"
+    );
+    if (confirmToDelete) {
+      dispatch({
+        type: "REMOVE_ALL_ITEMS",
+      });
+    }
   };
 
   return (
@@ -35,9 +40,11 @@ const Checkout = () => {
               <h1 className="checkout_title">Your Shopping Basket</h1>
               <button onClick={removeAllItems}>Clear All</button>
             </div>
+            
             {basket.map((item) => (
               <CheckoutProduct key={item.id} {...item} />
             ))}
+            
           </div>
         )}
       </div>
