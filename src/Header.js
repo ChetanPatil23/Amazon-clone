@@ -8,6 +8,7 @@ import { auth } from "./firebase";
 
 const Header = () => {
   const [{ basket, user }] = useGlobalContext();
+  const userName = user?.email || "Guest";
 
   const login = () => {
     if (user) {
@@ -30,7 +31,7 @@ const Header = () => {
       <div className="header__nav">
         <Link to={!user && "/login"} className="header__link">
           <div onClick={login} className="header__option">
-            <span className="header__option1">Hello {user?.email}</span>
+            <span className="header__option1">Hello {userName}</span>
             <span className="header__option2">
               {user ? "Sign Out" : "Sign In"}
             </span>
