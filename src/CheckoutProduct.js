@@ -17,12 +17,12 @@ const CheckoutProduct = ({ id, title, image, price, rating, qty }) => {
     });
   };
 
-  const removeCompleteItem = (itemId) =>{
+  const removeCompleteItem = (itemId) => {
     dispatch({
       type: "REMOVE_COMPLETE_ITEM_FROM_BASKET",
       itemId: itemId,
     });
-  }
+  };
   return (
     <div className="checkoutProduct">
       <img className="checkoutProduct__image" src={image} alt={title} />
@@ -37,13 +37,13 @@ const CheckoutProduct = ({ id, title, image, price, rating, qty }) => {
           {Array(rating)
             .fill()
             .map((_, index) => (
-              <p key={index}>🌟</p>
+              <p key={index}>⭐</p>
             ))}
         </div>
         <div className="btngrp">
           <button onClick={() => removeItem(id)}>-</button>
 
-          <input type="text" value={qty} readOnly/>
+          <input type="text" value={qty} readOnly />
           <button className="btn2" onClick={addItem}>
             +
           </button>
