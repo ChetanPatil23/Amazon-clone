@@ -5,6 +5,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { useGlobalContext } from "./Context";
 import { auth } from "./firebase";
+import { getBasketLength } from "./reducer";
 
 const Header = () => {
   const [{ basket, user }] = useGlobalContext();
@@ -53,7 +54,8 @@ const Header = () => {
           <div className="header__optionbasket">
             <ShoppingBasketIcon />
             <span className="header__option2 header__basketcount">
-              {basket?.length}
+              {/* {basket?.length} */}
+              {getBasketLength(basket)}
             </span>
           </div>
         </Link>

@@ -1,9 +1,13 @@
 export const getBasketTotal = (basket) =>
-  basket?.reduce((amount, item) => Number(item.price*item.qty) + amount, 0);
+  basket?.reduce((amount, item) => Number(item.price * item.qty) + amount, 0);
+
+export const getBasketLength = (basket) =>
+  basket?.reduce((length, item) => item.qty + length, 0);
 
 export const initialState = {
   basket: [],
   user: null,
+  showAlert: { msg: "", show: false, id: "", color: "" },
 };
 
 const reducer = (state, action) => {
@@ -12,6 +16,18 @@ const reducer = (state, action) => {
     case "REMOVE_ALL_ITEMS":
       return { ...state, basket: [] };
       break;
+
+    case "SHOW_ALERT":
+      return {
+        ...state,
+        showAlert: {
+          ...state.showAlert,
+          msg: action.alert.msg,
+          show: action.alert.show,
+          id: action.alert.id,
+          color: action.alert.color,
+        },
+      };
 
     case "SET_USER":
       return { ...state, user: action.user };
@@ -65,16 +81,14 @@ const reducer = (state, action) => {
         };
       }
       break;
-      case "REMOVE_COMPLETE_ITEM_FROM_BASKET":
-        const arrayItems=[...state.basket];
-        const newBasket = arrayItems.filter(
-          (item) => item.id !== action.itemId
-        );
-        return {
-          ...state,
-          basket: newBasket,
-        };
-        break;
+    case "REMOVE_COMPLETE_ITEM_FROM_BASKET":
+      const arrayItems = [...state.basket];
+      const newBasket = arrayItems.filter((item) => item.id !== action.itemId);
+      return {
+        ...state,
+        basket: newBasket,
+      };
+      break;
 
     default:
       return state;

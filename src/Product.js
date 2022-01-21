@@ -1,9 +1,10 @@
 import React from "react";
 import "./Product.css";
 import { useGlobalContext } from "./Context";
+import Alert from "./Alert";
 
 const Product = ({ id, title, image, price, rating, qty }) => {
-  const [{ basket, user }, dispatch] = useGlobalContext();
+  const [{ basket, user, showAlert }, dispatch] = useGlobalContext();
 
   const addToBasket = () => {
     if (user) {
@@ -15,7 +16,16 @@ const Product = ({ id, title, image, price, rating, qty }) => {
           image,
           price,
           rating,
-          qty
+          qty,
+        },
+      });
+      dispatch({
+        type: "SHOW_ALERT",
+        alert: {
+          show: true,
+          msg: "Item added to Basket",
+          id: id,
+          color: "green",
         },
       });
     } else {
@@ -24,6 +34,7 @@ const Product = ({ id, title, image, price, rating, qty }) => {
   };
   return (
     <div className="product">
+      {showAlert.show && showAlert.id == id && <Alert />}
       <div className="product__info">
         <p>{title}</p>
         <p className="product__price">
