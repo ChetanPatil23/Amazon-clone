@@ -10,7 +10,7 @@ const Alert = () => {
         type: "SHOW_ALERT",
         alert: { msg: "", show: false, id: "" },
       });
-    }, 2000);
+    }, 800);
     return () => {
       clearTimeout(timeout);
     };
