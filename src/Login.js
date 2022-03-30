@@ -53,17 +53,17 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button onClick={login} type="submit" className="signinbtn">
-            Sign in
-          </button>
+          <button onClick={register} className="signinbtn">
+          Create your amazon account
+        </button>
         </form>
         <p>
           By signing-in you agree to Amazon's condition of Use & Sale. Please
           see our privacy notice and cookies policy.
         </p>
-        <button onClick={register} className="accountbtn">
-          Create your amazon account
-        </button>
+        <button onClick={login} type="submit" className="signinbtn">
+            Sign in
+          </button>
       </div>
     </div>
   );

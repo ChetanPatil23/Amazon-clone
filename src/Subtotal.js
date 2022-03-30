@@ -6,8 +6,17 @@ import { getBasketTotal } from "./reducer";
 import { useHistory } from "react-router-dom";
 
 const Subtotal = () => {
-  const [{ basket }, dispatch] = useGlobalContext();
+  const [{ basket, user }, dispatch] = useGlobalContext();
   const history=useHistory();
+
+  const checkout=(e)=>{
+    if(user){
+    history.push('/payment')
+    }
+    else{
+      alert("Please Click on SignIn to 'Create an Account or SignIn' to proceed with Checkout");
+    }
+  }
 
   return (
     <div className="subtotal">
@@ -29,7 +38,7 @@ const Subtotal = () => {
         prefix={"$"}
       />
 
-      <button onClick={e=>history.push('/payment')}>Proceed to Checkout</button>
+      <button onClick={checkout}>Proceed to Checkout</button>
     </div>
   );
 };

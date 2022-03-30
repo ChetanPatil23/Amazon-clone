@@ -4,10 +4,9 @@ import { useGlobalContext } from "./Context";
 import Alert from "./Alert";
 
 const Product = ({ id, title, image, price, rating, qty }) => {
-  const [{ basket, user, showAlert }, dispatch] = useGlobalContext();
+  const [{ basket, showAlert }, dispatch] = useGlobalContext();
 
   const addToBasket = () => {
-    if (user) {
       dispatch({
         type: "ADD_TO_BASKET",
         item: {
@@ -28,9 +27,7 @@ const Product = ({ id, title, image, price, rating, qty }) => {
           color: "green",
         },
       });
-    } else {
-      alert("Please Sign-In to Add Items to the Basket");
-    }
+    
   };
   return (
     <div className="product">
